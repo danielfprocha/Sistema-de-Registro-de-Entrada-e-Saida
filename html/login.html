@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Registro de Ponto</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/login.css" />
+</head>
+<body>
+
+  <main class="login-container">
+    <div class="login-card">
+
+      <div class="login-header">
+        <div class="login-icon">🏥</div>
+        <h1>Clinica Veterinaria</h1>
+        <p>Sistema de Registro de Ponto</p>
+      </div>
+
+      <div class="login-form">
+        <div class="form-group">
+          <label for="nome">Usuario</label>
+          <input type="text" id="nome" placeholder="Digite seu usuario" />
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" placeholder="Digite sua senha" />
+        </div>
+
+        <p id="msg-erro" class="msg-erro"></p>
+
+        <button id="btn-entrar" onclick="handleLogin()">Entrar</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    if (getUsuarioLogado()) {
+      window.location.href = "qrcode.html";
+    }
+
+    document.getElementById("senha").addEventListener("keydown", e => {
+      if (e.key === "Enter") handleLogin();
+    });
+
+    async function handleLogin() {
+      const nome = document.getElementById("nome").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+      const msgErro = document.getElementById("msg-erro");
+      const btn = document.getElementById("btn-entrar");
+
+      msgErro.textContent = "";
+
+      if (!nome || !senha) {
+        msgErro.textContent = "Preencha o usuario e a senha.";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Carregando...";
+
+      const resultado = await login(nome, senha);
+
+      btn.disabled = false;
+      btn.textContent = "Entrar";
+
+      if (resultado.sucesso) {
+        window.location.href = "qrcode.html";
+      } else {
+        msgErro.textContent = resultado.mensagem;
+        document.getElementById("senha").value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>

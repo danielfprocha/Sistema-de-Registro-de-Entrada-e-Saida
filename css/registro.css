@@ -1,0 +1,60 @@
+#registrar-ponto-box {
+    background-color: var(--cor-branca);
+    border-radius: 18px;
+    padding: 35px 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.175);
+}
+
+.botoes-registro {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+}
+
+#registrar-ponto-titulo {
+    margin: 8px 5px;
+}
+
+#registrar-ponto-subtitulo {
+    margin: 8px 5px 20px 5px;
+    color: var(--cor-subtitulo);
+}
+
+.botao-registro {
+    border-radius: 12px;
+    padding: 18px 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-branca);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+.botao-registro:hover {
+    transform: scale(1.02);
+}
+
+.botao-registro:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+}
+
+.botao-entrada {
+    background-color: var(--cor-entrada);
+    border-color: var(--cor-entrada);
+}
+
+.botao-saida {
+    background-color: var(--cor-saida);
+    border-color: var(--cor-saida);
+}
+
+.icone {
+    font-size: 1.8em;
+    line-height: 1;
+}

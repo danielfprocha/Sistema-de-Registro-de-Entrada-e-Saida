@@ -8,25 +8,28 @@
   <link rel="stylesheet" href="../css/login.css" />
 </head>
 <body>
+  <header>
+        <p>Registro de <span id="header-entrada">Entrada</span> e <span id="header-saida">Saída</span></p>
+  </header>
 
   <main class="login-container">
     <div class="login-card">
 
       <div class="login-header">
         <div class="login-icon">🏥</div>
-        <h1>Clinica Veterinaria</h1>
+        <h1>Clínica Veterinária UniBH</h1>
         <p>Sistema de Registro de Ponto</p>
       </div>
 
       <div class="login-form">
         <div class="form-group">
-          <label for="nome">Usuario</label>
-          <input type="text" id="nome" placeholder="Digite seu usuario" />
+          <label for="nome">Usuário</label>
+          <input type="text" id="nome" placeholder="Digite seu usuário..." />
         </div>
 
         <div class="form-group">
           <label for="senha">Senha</label>
-          <input type="password" id="senha" placeholder="Digite sua senha" />
+          <input type="password" id="senha" placeholder="Digite sua senha..." />
         </div>
 
         <p id="msg-erro" class="msg-erro"></p>
@@ -36,6 +39,10 @@
 
     </div>
   </main>
+
+  <footer>
+        <p>Sistema de Registro de Ponto - Clínica Veterinária UniBH</p>
+  </footer>
 
   <script src="../js/api.js"></script>
   <script src="../js/auth.js"></script>
@@ -57,7 +64,7 @@
       msgErro.textContent = "";
 
       if (!nome || !senha) {
-        msgErro.textContent = "Preencha o usuario e a senha.";
+        msgErro.textContent = "Preencha o usuário e a senha.";
         return;
       }
 

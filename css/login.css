@@ -1,14 +1,13 @@
 .login-container {
-  min-height: 100vh;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--cor-fundo);
-  padding: 1rem;
+  padding: 24px 20px;
 }
 
 .login-card {
-  background-color: var(--cor-card);
+  background-color: var(--cor-branca);
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   padding: 2.5rem 2rem;
@@ -29,13 +28,13 @@
 .login-header h1 {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--cor-texto);
+  color: var(--cor-preto);
   margin-bottom: 0.25rem;
 }
 
 .login-header p {
   font-size: 0.9rem;
-  color: var(--cor-texto-suave);
+  color: var(--cor-subtitulo);
 }
 
 .login-form {
@@ -53,22 +52,22 @@
 .form-group label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--cor-texto);
+  color: var(--cor-preto);
 }
 
 .form-group input {
   padding: 0.75rem 1rem;
-  border: 1.5px solid var(--cor-borda);
+  border: 1.5px solid var(--cor-preto);
   border-radius: 8px;
   font-size: 1rem;
-  color: var(--cor-texto);
+  color: var(--cor-preto);
   background-color: var(--cor-fundo);
   outline: none;
   transition: border-color 0.2s;
 }
 
 .form-group input:focus {
-  border-color: var(--cor-primaria);
+  border-color: var(--cor-preto);
 }
 
 .msg-erro {
@@ -80,7 +79,7 @@
 
 #btn-entrar {
   padding: 0.85rem;
-  background-color: var(--cor-primaria);
+  background-color: var(--cor-preto);
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
@@ -91,7 +90,7 @@
 }
 
 #btn-entrar:hover:not(:disabled) {
-  background-color: var(--cor-primaria-hover);
+  background-color: var(--cor-preto);
 }
 
 #btn-entrar:disabled {

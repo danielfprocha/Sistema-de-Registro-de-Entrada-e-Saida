@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histórico de Presença</title>
+    <title>Histórico - Registro de Ponto</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/historico.css">
 </head>
 <body>
     <header>
@@ -11,7 +13,37 @@
     </header>
 
     <main>
+        <div class="main-box">
+            <div id="historico-topo">
+                <div>
+                    <h1 class="box-titulo">Meu Histórico</h1>
+                    <p class="box-subtitulo">Seus últimos registros de ponto:</p>
+                </div>
+            </div>
 
+            <div class="tabela-historico">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>04/05/2026</td>
+                            <td>08:47</td>
+                            <td><span class="badge badge-entrada">Entrada</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="historico-vazio" class="msg-erro">
+                Nenhum registro encontrado.
+            </p>
+        </div>
     </main>
 
     <footer>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Registro</title>
+    <title>Entrada ou Saída - Registro de Ponto</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/registro.css">
 </head>
@@ -13,9 +13,9 @@
     </header>
 
     <main>
-        <div id="registrar-ponto-box">
-            <h1 id="registrar-ponto-titulo">Registrar Ponto</h1>
-            <p id="registrar-ponto-subtitulo">Selecione a ação desejada:</p>
+        <div class="main-box">
+            <h1 class="box-titulo">Registrar Ponto</h1>
+            <p class="box-subtitulo">Selecione a ação desejada:</p>
 
             <div class="botoes-registro">
                 <button class="botao-registro botao-entrada">
@@ -28,8 +28,63 @@
                 </button>
             </div>
         </div>
+        
+        <div style="display: flex;" class="msg-erro">
+            <span class="erro-icone">⚠️</span>
+            <span>Seu último registro já foi uma <strong>Entrada</strong>. Selecione "Saída" ou contate o administrador, caso você não tenha registrado a sua última ação.</span>
+        </div>
+        
+        <div style="display: flex;" class="msg-erro">
+            <span class="erro-icone">⚠️</span>
+            <span>Seu último registro já foi uma <strong>Saída</strong>. Selecione "Entrada" ou contate o administrador, caso você não tenha registrado a sua última ação.</span>
+        </div>
+        
+        <div class="area-confirmacao">
+            <p class="confirmacao-titulo">Confirmar Entrada</p>
+            
+            <div class="confirmacao-detalhe">
+                <span class="icone-detalhe">👤</span>
+                <div class="confirmacao-detalhe-texto">
+                    <p>Estagiária</p>
+                    <strong>Eduarda</strong>
+                </div>
+            </div>
+            
+            <button class="btn-confirmar">Confirmar Entrada</button>
+            <button class="btn-cancelar">Cancelar</button>
+        </div>
+        
+        <div class="area-confirmacao">
+            <p class="confirmacao-titulo">Confirmar Saída</p>
+            
+            <div class="confirmacao-detalhe">
+                <span class="icone-detalhe">👤</span>
+                <div class="confirmacao-detalhe-texto">
+                    <p>Estagiária</p>
+                    <strong>Eduarda</strong>
+                </div>
+            </div>
+            
+            <button class="btn-confirmar">Confirmar Saída</button>
+            <button class="btn-cancelar">Cancelar</button>
+        </div>
+        
+        <div class="area-feedback">
+            <span class="feedback-icone">✅</span>
+            <p class="feedback-titulo">Entrada Confirmada!</p>
+            <p class="feedback-info">Segunda-feira, 04 de maio de 2026</p>
+            <p class="feedback-info">08:47</p>
+        </div>
+        
+        
+        <div class="area-feedback">
+            <span class="feedback-icone">✅</span>
+            <p class="feedback-titulo">Saída Confirmada!</p>
+            <p class="feedback-info">Segunda-feira, 04 de maio de 2026</p>
+            <p class="feedback-info">08:47</p>
+        </div>
     </main>
-
+        
     <footer>
         <p>Sistema de Registro de Ponto - Clínica Veterinária UniBH</p>
     </footer>

@@ -1,25 +1,7 @@
-#registrar-ponto-box {
-    background-color: var(--cor-branca);
-    border-radius: 18px;
-    padding: 35px 30px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.175);
-}
-
 .botoes-registro {
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: 14px;
-}
-
-#registrar-ponto-titulo {
-    margin: 8px 5px;
-}
-
-#registrar-ponto-subtitulo {
-    margin: 8px 5px 20px 5px;
-    color: var(--cor-subtitulo);
 }
 
 .botao-registro {

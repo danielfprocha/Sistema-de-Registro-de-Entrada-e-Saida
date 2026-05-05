@@ -2,14 +2,13 @@
 
 :root {
     --fonte-padrao: 'Urbanist', sans-serif; 
-    --cor-entrada: #00bf63;
-    --cor-saida: #404040;
-    --cor-subtitulo: #10101064;
+    --cor-primaria: #000;
+    --cor-secundaria: #10101064;
+    --cor-branca: #fff;
     --cor-fundo: #F0F2F5;
     --cor-erro: #B02220;
-    --cor-footer: #10101064;
-    --cor-branca: #fff;
-    --cor-preta: #000;
+    --cor-entrada: #00bf63;
+    --cor-saida: #404040;
 }
 
 * {
@@ -22,7 +21,7 @@ body {
     font-family: var(--fonte-padrao);
     font-weight: 400;
     background-color: var(--cor-fundo);
-    color: var(--cor-preta);
+    color: var(--cor-primaria);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -32,7 +31,7 @@ header {
     font-family: var(--fonte-padrao);
     font-weight: bold;
     background-color: var(--cor-branca);
-    color: var(--cor-preta);
+    color: var(--cor-primaria);
     min-height: 80px;
     width: 100%;
     display: flex;
@@ -60,18 +59,31 @@ main {
     padding: 24px 20px;
 }
 
+.main-box {
+    background-color: var(--cor-branca);
+    border-radius: 18px;
+    padding: 35px 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.175);
+}
+
+.box-titulo {
+    margin: 8px 5px;
+}
+
+.box-subtitulo {
+    margin: 8px 5px 30px 5px;
+    color: var(--cor-secundaria);
+}
+
 footer {
     padding: 15px;
     text-align: center;
-    color: var(--cor-footer)
+    color: var(--cor-secundaria)
 }
 
-h1, h2, h3 {
-    font-family: var(--fonte-padrao);
-    font-weight: 700;
-}
-
-button {
+h1, h2, button {
     font-family: var(--fonte-padrao);
     font-weight: 700;
 }

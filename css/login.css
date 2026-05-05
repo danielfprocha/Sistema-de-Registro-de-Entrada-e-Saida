@@ -28,13 +28,13 @@
 .login-header h1 {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--cor-preto);
+  color: var(--cor-primaria);
   margin-bottom: 0.25rem;
 }
 
 .login-header p {
   font-size: 0.9rem;
-  color: var(--cor-subtitulo);
+  color: var(--cor-secundaria);
 }
 
 .login-form {
@@ -52,22 +52,22 @@
 .form-group label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--cor-preto);
+  color: var(--cor-primaria);
 }
 
 .form-group input {
   padding: 0.75rem 1rem;
-  border: 1.5px solid var(--cor-preto);
+  border: 1.5px solid var(--cor-primaria);
   border-radius: 8px;
   font-size: 1rem;
-  color: var(--cor-preto);
+  color: var(--cor-primaria);
   background-color: var(--cor-fundo);
   outline: none;
   transition: border-color 0.2s;
 }
 
 .form-group input:focus {
-  border-color: var(--cor-preto);
+  border-color: var(--cor-primaria);
 }
 
 .msg-erro {
@@ -79,7 +79,7 @@
 
 #btn-entrar {
   padding: 0.85rem;
-  background-color: var(--cor-preto);
+  background-color: var(--cor-primaria);
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
@@ -90,7 +90,7 @@
 }
 
 #btn-entrar:hover:not(:disabled) {
-  background-color: var(--cor-preto);
+  background-color: var(--cor-fundo);
 }
 
 #btn-entrar:disabled {

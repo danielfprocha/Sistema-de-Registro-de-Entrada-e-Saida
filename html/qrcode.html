@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela QR Code</title>
+    <title>QR Code - Registro de Ponto</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/qrcode.css">
 </head>
 <body>
     <header>
@@ -11,7 +13,25 @@
     </header>
 
     <main>
-
+        <div class="main-box">
+ 
+            <h1 class="box-titulo">Escanear QR Code</h1>
+            <p class="box-subtitulo">Aponte a câmera para o QR Code na entrada da clínica</p>
+ 
+            <!-- Área onde a câmera será renderizada pela lib html5-qrcode -->
+            <div id="qr-reader">
+                <!-- Placeholder estático para a Fase 1 -->
+                <div id="qr-placeholder">
+                    <span id="qr-icone">📷</span>
+                    <p>A câmera aparecerá aqui</p>
+                </div>
+            </div>
+ 
+            <p id="msg-erro-qr" class="msg-erro">
+                ⚠️ Não foi possível acessar a câmera. Verifique as permissões do navegador.
+            </p>
+ 
+        </div>
     </main>
 
     <footer>

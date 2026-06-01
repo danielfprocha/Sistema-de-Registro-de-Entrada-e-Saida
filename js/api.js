@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzGnqnvEgAoxy6Ra2cQVRIoH1DugqJcDVKvRPecaPDJA3vhW_zCHTVb6SgoqS0fKmsllQ/exec/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzGnqnvEgAoxy6Ra2cQVRIoH1DugqJcDVKvRPecaPDJA3vhW_zCHTVb6SgoqS0fKmsllQ/exec";
 
 async function fazerLogin(nome, senha) {
   const res = await fetch(`${API_URL}?tipo=login&nome=${encodeURIComponent(nome)}&senha=${encodeURIComponent(senha)}`);

@@ -6,6 +6,8 @@
     <title>QR Code - Registro de Ponto</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/qrcode.css">
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
 </head>
 <body>
     <header>
@@ -18,9 +20,7 @@
             <h1 class="box-titulo">Escanear QR Code</h1>
             <p class="box-subtitulo">Aponte a câmera para o QR Code na entrada da clínica</p>
  
-            <!-- Área onde a câmera será renderizada pela lib html5-qrcode -->
             <div id="qr-reader">
-                <!-- Placeholder estático para a Fase 1 -->
                 <div id="qr-placeholder">
                     <span id="qr-icone">📷</span>
                     <p>A câmera aparecerá aqui:</p>
@@ -37,5 +37,9 @@
     <footer>
         <p>Sistema de Registro de Ponto - Clínica Veterinária UniBH</p>
     </footer>
+
+    <script>
+        exigirLogin();
+    </script>
 </body>
 </html>

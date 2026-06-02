@@ -6,14 +6,11 @@
     <title>QR Code - Registro de Ponto</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/qrcode.css">
-    <script src="../js/api.js"></script>
-    <script src="../js/auth.js"></script>
-    <script src="../js/qrcode.js"></script>
-    <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body>
     <header>
         <p>Registro de <span id="header-entrada">Entrada</span> e <span id="header-saida">Saída</span></p>
+        <button onclick="logout()">Sair</button>
     </header>
 
     <main>
@@ -43,5 +40,10 @@
     <script>
         exigirLogin();
     </script>
+
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/qrcode.js"></script>
 </body>
 </html>

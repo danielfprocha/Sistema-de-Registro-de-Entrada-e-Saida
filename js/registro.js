@@ -7,38 +7,82 @@ if (!sessionStorage.getItem("qr_validado")) {
 const usuario = getUsuarioLogado();
 document.getElementById("nome-usuario").textContent = usuario.nome;
 
+function esconderTudo() {
+  document.getElementById("erro-entrada-dupla").style.display = "none";
+  document.getElementById("erro-saida-dupla").style.display = "none";
+  document.getElementById("confirmacao-entrada").style.display = "none";
+  document.getElementById("confirmacao-saida").style.display = "none";
+  document.getElementById("feedback-entrada").style.display = "none";
+  document.getElementById("feedback-saida").style.display = "none";
+}
+
+function cancelar() {
+  esconderTudo();
+}
+
 async function confirmarRegistro(acao) {
+  esconderTudo();
+
   // 1. Buscar último registro do usuário
   const ultimos = await buscarUltimoRegistro(usuario.id);
   const ultimo = ultimos.length ? ultimos[0] : null;
 
   // 2. Validar sequência de entrada/saída
   if (ultimo) {
-    const ultimaAcao = ultimo[3]; // coluna "acao" na planilha
+    const ultimaAcao = ultimo[4]; // coluna "acao" na nova estrutura
     if (ultimaAcao === acao) {
-      const msg = acao === "entrada"
-        ? "Seu último registro já foi uma Entrada."
-        : "Seu último registro já foi uma Saída.";
-      document.getElementById("msg-status").textContent = msg;
+      if (acao === "entrada") {
+        document.getElementById("erro-entrada-dupla").style.display = "flex";
+      } else {
+        document.getElementById("erro-saida-dupla").style.display = "flex";
+      }
       return;
     }
   } else if (acao === "saida") {
-    document.getElementById("msg-status").textContent = "Você ainda não registrou uma Entrada.";
+    document.getElementById("erro-saida-dupla").style.display = "flex";
     return;
   }
 
-  // 3. Salvar registro (sem latitude e longitude)
+  // 3. Mostrar tela de confirmação com dados do usuário
+  if (acao === "entrada") {
+    document.getElementById("cargo-usuario").textContent = usuario.cargo;
+    document.getElementById("nome-confirmacao").textContent = usuario.nome;
+    document.getElementById("confirmacao-entrada").style.display = "block";
+    return;
+  } else {
+    document.getElementById("cargo-usuario-saida").textContent = usuario.cargo;
+    document.getElementById("nome-confirmacao-saida").textContent = usuario.nome;
+    document.getElementById("confirmacao-saida").style.display = "block";
+    return;
+  }
+}
+
+async function salvarEConfirmar(acao) {
+  esconderTudo();
+
+  // 4. Salvar registro
   await salvarRegistro({
     usuario_id: usuario.id,
     nome: usuario.nome,
+    cargo: usuario.cargo,
     acao: acao
   });
 
-  // 4. Exibir confirmação
+  // 5. Exibir feedback de sucesso
   const agora = new Date();
-  document.getElementById("msg-status").textContent =
-    `${acao === "entrada" ? "Entrada" : "Saída"} confirmada às ${agora.toLocaleTimeString("pt-BR")} de ${agora.toLocaleDateString("pt-BR")}`;
+  const data = agora.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  const hora = agora.toLocaleTimeString("pt-BR");
 
-  // 5. Limpar validação do QR após uso
+  if (acao === "entrada") {
+    document.getElementById("feedback-entrada-data").textContent = data;
+    document.getElementById("feedback-entrada-hora").textContent = hora;
+    document.getElementById("feedback-entrada").style.display = "block";
+  } else {
+    document.getElementById("feedback-saida-data").textContent = data;
+    document.getElementById("feedback-saida-hora").textContent = hora;
+    document.getElementById("feedback-saida").style.display = "block";
+  }
+
+  // 6. Limpar validação do QR após uso
   sessionStorage.removeItem("qr_validado");
 }

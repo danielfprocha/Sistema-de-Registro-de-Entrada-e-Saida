@@ -11,86 +11,85 @@
 <body>
     <header>
         <p>Registro de <span id="header-entrada">Entrada</span> e <span id="header-saida">Saída</span></p>
+        <button onclick="logout()">Sair</button>
     </header>
 
     <main>
         <div class="main-box">
             <h1 class="box-titulo">Registrar Ponto</h1>
             <p class="box-subtitulo">Selecione a ação desejada:</p>
+            <p id="nome-usuario"></p>
 
             <div class="botoes-registro">
-                <button class="botao-registro botao-entrada">
+                <button class="botao-registro botao-entrada" onclick="confirmarRegistro('entrada')">
                     <span class="icone">→</span>
                     Entrada
                 </button>
-                <button class="botao-registro botao-saida">
+                <button class="botao-registro botao-saida" onclick="confirmarRegistro('saida')">
                     <span class="icone">←</span>
                     Saída
                 </button>
             </div>
-        </div>
+
+            <p id="msg-status"></p>
         
-        <div style="display: flex;" class="msg-erro">
-            <span class="erro-icone">⚠️</span>
-            <span>Seu último registro já foi uma <strong>Entrada</strong>. Selecione "Saída" ou contate o administrador, caso você não tenha registrado a sua última ação.</span>
-        </div>
-        
-        <div style="display: flex;" class="msg-erro">
-            <span class="erro-icone">⚠️</span>
-            <span>Seu último registro já foi uma <strong>Saída</strong>. Selecione "Entrada" ou contate o administrador, caso você não tenha registrado a sua última ação.</span>
-        </div>
-        
-        <div class="area-confirmacao">
-            <p class="confirmacao-titulo">Confirmar Entrada</p>
-            <div class="confirmacao-detalhe">
-                <span class="icone-detalhe">👤</span>
-                <div class="confirmacao-detalhe-texto">
-                    <p>Estagiária</p>
-                    <strong>Eduarda</strong>
-                </div>
+            <div style="display: none;" class="msg-erro" id="erro-entrada-dupla">
+                <span class="erro-icone">⚠️</span>
+                <span>Seu último registro já foi uma <strong>Entrada</strong>. Selecione "Saída" ou contate o administrador.</span>
             </div>
-            <button class="btn-confirmar">Confirmar Entrada</button>
-            <button class="btn-cancelar">Cancelar</button>
-        </div>
-        
-        <div class="area-confirmacao">
-            <p class="confirmacao-titulo">Confirmar Saída</p>
-            <div class="confirmacao-detalhe">
-                <span class="icone-detalhe">👤</span>
-                <div class="confirmacao-detalhe-texto">
-                    <p>Estagiária</p>
-                    <strong>Eduarda</strong>
-                </div>
+
+            <div style="display: none;" class="msg-erro" id="erro-saida-dupla">
+                <span class="erro-icone">⚠️</span>
+                <span>Seu último registro já foi uma <strong>Saída</strong>. Selecione "Entrada" ou contate o administrador.</span>
             </div>
-            <button class="btn-confirmar">Confirmar Saída</button>
-            <button class="btn-cancelar">Cancelar</button>
-        </div>
-        
-        <div class="area-feedback">
-            <span class="feedback-icone">✅</span>
-            <p class="feedback-titulo">Entrada Confirmada!</p>
-            <p class="feedback-info">Segunda-feira, 04 de maio de 2026</p>
-            <p class="feedback-info">08:47</p>
-        </div>
-        
-        <div class="area-feedback">
-            <span class="feedback-icone">✅</span>
-            <p class="feedback-titulo">Saída Confirmada!</p>
-            <p class="feedback-info">Segunda-feira, 04 de maio de 2026</p>
-            <p class="feedback-info">08:47</p>
-        </div>
+
+            <div style="display: none;" class="area-confirmacao" id="confirmacao-entrada">
+                <p class="confirmacao-titulo">Confirmar Entrada</p>
+                <div class="confirmacao-detalhe">
+                    <span class="icone-detalhe">👤</span>
+                    <div class="confirmacao-detalhe-texto">
+                        <p id="cargo-usuario"></p>
+                        <strong id="nome-confirmacao"></strong>
+                    </div>
+                </div>
+                <button class="btn-confirmar" onclick="salvarEConfirmar('entrada')">Confirmar Entrada</button>
+                <button class="btn-cancelar" onclick="cancelar()">Cancelar</button>
+            </div>
+
+            <div style="display: none;" class="area-confirmacao" id="confirmacao-saida">
+                <p class="confirmacao-titulo">Confirmar Saída</p>
+                <div class="confirmacao-detalhe">
+                    <span class="icone-detalhe">👤</span>
+                    <div class="confirmacao-detalhe-texto">
+                        <p id="cargo-usuario-saida"></p>
+                        <strong id="nome-confirmacao-saida"></strong>
+                    </div>
+                </div>
+                <button class="btn-confirmar" onclick="salvarEConfirmar('saida')">Confirmar Saída</button>
+                <button class="btn-cancelar" onclick="cancelar()">Cancelar</button>
+            </div>
+
+            <div style="display: none;" class="area-feedback" id="feedback-entrada">
+                <span class="feedback-icone">✅</span>
+                <p class="feedback-titulo">Entrada Confirmada!</p>
+                <p class="feedback-info" id="feedback-entrada-data"></p>
+                <p class="feedback-info" id="feedback-entrada-hora"></p>
+            </div>
+
+            <div style="display: none;" class="area-feedback" id="feedback-saida">
+                <span class="feedback-icone">✅</span>
+                <p class="feedback-titulo">Saída Confirmada!</p>
+                <p class="feedback-info" id="feedback-saida-data"></p>
+                <p class="feedback-info" id="feedback-saida-hora"></p>
+            </div>
+
+        </div>  
     </main>
         
     <footer>
         <p>Sistema de Registro de Ponto - Clínica Veterinária UniBH</p>
     </footer>
-
-    <script>
-        exigirLogin();
-    </script>
-    <button onclick="confirmarRegistro('entrada')">Confirmar Entrada</button>
-    <button onclick="confirmarRegistro('saida')">Confirmar Saída</button>
-    <p id="msg-status"></p>
+    
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/registro.js"></script>

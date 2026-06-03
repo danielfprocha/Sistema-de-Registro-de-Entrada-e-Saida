@@ -15,10 +15,14 @@ function iniciarLeitor() {
         window.location.href = "registro.html";
       } else {
         document.getElementById("msg-erro-qr").textContent = "QR Code inválido. Use o código da clínica.";
+        document.getElementById("msg-erro-qr").style.display = "block";
       }
     },
     (erro) => { /* ignorar erros de leitura contínua */ }
-  );
+  ).catch(() => {
+    // Câmera não acessível — mostrar mensagem de erro
+    document.getElementById("msg-erro-qr").style.display = "block";
+  });
 }
 
 iniciarLeitor();

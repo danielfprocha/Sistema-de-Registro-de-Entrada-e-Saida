@@ -29,7 +29,7 @@ async function confirmarRegistro(acao) {
 
   // 2. Validar sequência de entrada/saída
   if (ultimo) {
-    const ultimaAcao = ultimo[4]; // coluna "acao" na nova estrutura
+    const ultimaAcao = ultimo[3]; // coluna "acao" na nova estrutura
     if (ultimaAcao === acao) {
       if (acao === "entrada") {
         document.getElementById("erro-entrada-dupla").style.display = "flex";

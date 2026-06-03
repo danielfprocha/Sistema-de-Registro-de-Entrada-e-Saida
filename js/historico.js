@@ -17,9 +17,9 @@ async function carregarHistorico() {
   registros.reverse().forEach(r => {
     const linha = tbody.insertRow();
     linha.innerHTML = `
-      <td>${r[4]}</td>
       <td>${r[5]}</td>
-      <td>${r[3]}</td>
+      <td>${r[6]}</td>
+      <td>${r[4]}</td>
     `;
   });
 }

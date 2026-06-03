@@ -1,7 +1,3 @@
-// =====================================================
-// auth.js — Fase 3: Autenticação
-// =====================================================
-
 async function login(nome, senha) {
   try {
     const resultado = await fazerLogin(nome, senha);

@@ -1,6 +1,6 @@
 exigirLogin();
 
-const CODIGO_VALIDO = "CLINICA_VETERINARIA_UNIBH_2025";
+const CODIGO_VALIDO = "CLINICA_VETERINARIA_UNIBH";
 
 function iniciarLeitor() {
   const leitor = new Html5Qrcode("qr-reader");

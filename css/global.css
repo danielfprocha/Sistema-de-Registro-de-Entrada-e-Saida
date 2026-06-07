@@ -41,6 +41,10 @@ header {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
+.header-titulo {
+    margin: auto;
+}
+
 #header-entrada {
     color: var(--cor-entrada);
     font-style: italic;
@@ -85,5 +89,16 @@ footer {
 
 h1, h2, button {
     font-family: var(--fonte-padrao);
+    font-weight: 700;
+}
+
+.sair {
+    margin: 1rem auto 1rem;
+    border-radius: 18px;
+    padding: 15px 10px;
+    width: 100%;
+    max-width: 80px;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.175);
+    font-size: large;
     font-weight: 700;
 }

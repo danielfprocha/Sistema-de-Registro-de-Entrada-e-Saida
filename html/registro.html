@@ -6,7 +6,6 @@
     <title>Entrada ou Saída - Registro de Ponto</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/registro.css">
-
 </head>
 <body>
     <header>
@@ -23,15 +22,15 @@
                 <button class="botao-registro botao-entrada" onclick="confirmarRegistro('entrada')">
                     <span class="icone">▶️</span>
                     Entrada
-             </button>
-            <button class="botao-registro botao-saida" onclick="confirmarRegistro('saida')">
-                <span class="icone">⏹️</span>
-                Saída
-            </button>
+                </button>
+                <button class="botao-registro botao-saida" onclick="confirmarRegistro('saida')">
+                    <span class="icone">⏹️</span>
+                    Saída
+                </button>
             </div>
 
             <p id="msg-status"></p>
-        
+
             <div style="display: none;" class="msg-erro" id="erro-entrada-dupla">
                 <span class="erro-icone">⚠️</span>
                 <span>Seu último registro já foi uma <strong>Entrada</strong>. Selecione "Saída" ou contate o administrador.</span>
@@ -81,16 +80,20 @@
                 <p class="feedback-info" id="feedback-saida-data"></p>
                 <p class="feedback-info" id="feedback-saida-hora"></p>
             </div>
-
-        </div>  
+        </div>
     </main>
 
-    <button class="sair" onclick="logout()">Voltar</button>
-        
+    <div class="botoes-rodape">
+        <button class="btn-historico" onclick="window.location.href='historico.html'">
+            <span>🕐</span> Histórico
+        </button>
+        <button class="sair" onclick="logout()">Voltar</button>
+    </div>
+
     <footer>
         <p>Sistema de Registro de Ponto - Clínica Veterinária UniBH</p>
     </footer>
-    
+
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/registro.js"></script>

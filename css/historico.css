@@ -1,0 +1,141 @@
+/* ===== HISTÓRICO ===== */
+
+.historico-topo {
+    margin-bottom: 24px;
+}
+
+.historico-icone-titulo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.historico-icone {
+    font-size: 2.2rem;
+    background-color: var(--cor-fundo);
+    border-radius: 14px;
+    padding: 10px 12px;
+    line-height: 1;
+}
+
+.box-titulo {
+    margin: 4px 0 2px 0;
+}
+
+.box-subtitulo {
+    margin: 0;
+    color: var(--cor-secundaria);
+    font-size: 0.88rem;
+}
+
+/* ===== LISTA DE REGISTROS (CARDS) ===== */
+
+.lista-registros {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.registro-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background-color: var(--cor-fundo);
+    border-left: 4px solid transparent;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.registro-card:hover {
+    transform: translateX(2px);
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.08);
+}
+
+.registro-card.entrada {
+    border-left-color: var(--cor-entrada);
+}
+
+.registro-card.saida {
+    border-left-color: #404040;
+}
+
+.registro-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.registro-data {
+    font-size: 0.78rem;
+    color: var(--cor-secundaria);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.registro-hora {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    letter-spacing: 0.01em;
+}
+
+.registro-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.registro-badge.entrada {
+    background-color: #e6f9f0;
+    color: var(--cor-entrada);
+}
+
+.registro-badge.saida {
+    background-color: #f0f0f0;
+    color: #404040;
+}
+
+/* ===== MENSAGEM VAZIA ===== */
+
+.msg-vazio {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--cor-secundaria);
+    font-size: 1rem;
+    line-height: 2;
+}
+
+/* ===== RESPONSIVO MOBILE ===== */
+
+@media (max-width: 480px) {
+    .main-box {
+        padding: 24px 18px !important;
+    }
+
+    .historico-icone {
+        font-size: 1.8rem;
+        padding: 8px 10px;
+    }
+
+    .registro-card {
+        padding: 12px 14px;
+    }
+
+    .registro-hora {
+        font-size: 1rem;
+    }
+
+    .registro-badge {
+        padding: 5px 10px;
+        font-size: 0.76rem;
+    }
+}

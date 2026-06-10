@@ -14,34 +14,25 @@
 
     <main>
         <div class="main-box">
-            <div id="historico-topo">
-                <div>
-                    <h1 class="box-titulo">Meu Histórico</h1>
-                    <p class="box-subtitulo">Seus últimos registros de ponto:</p>
+            <div class="historico-topo">
+                <div class="historico-icone-titulo">
+                    <span class="historico-icone">🕐</span>
+                    <div>
+                        <h1 class="box-titulo">Meu Histórico</h1>
+                        <p class="box-subtitulo">Últimos 10 registros de ponto</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="tabela-historico">
-                <table class="tabela" id="tabela-historico">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Hora</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+            <div id="lista-registros" class="lista-registros"></div>
 
-            <p id="historico-vazio" class="msg-erro" style="display: none;">
-                Nenhum registro encontrado.
+            <p id="historico-vazio" class="msg-vazio" style="display: none;">
+                <span>📭</span><br>Nenhum registro encontrado.
             </p>
         </div>
     </main>
 
-    <button class="sair" onclick="logout()">Voltar</button>
+    <button class="sair" onclick="window.location.href='registro.html'">Voltar</button>
 
     <footer>
         <p>Sistema de Registro de Ponto - Clínica Veterinária UniBH</p>

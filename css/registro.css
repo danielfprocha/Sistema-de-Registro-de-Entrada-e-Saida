@@ -1,3 +1,44 @@
+/* ===== BOTÕES RODAPÉ ===== */
+
+.botoes-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 240px;
+}
+
+.btn-historico {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 18px;
+    padding: 13px 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: var(--cor-branca);
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.175);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.15s;
+    white-space: nowrap;
+}
+
+.btn-historico:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    transform: scale(1.03);
+}
+
+.btn-historico:active {
+    transform: scale(0.97);
+}
+
+/* ===== BOTÕES ENTRADA/SAÍDA ===== */
+
 .botoes-registro {
     display: grid;
     grid-template-columns: 1fr 1fr;

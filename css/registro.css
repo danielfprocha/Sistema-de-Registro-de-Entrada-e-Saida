@@ -1,29 +1,33 @@
 .botoes-registro {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .botao-registro {
     border-radius: 12px;
-    padding: 18px 16px;
-    font-size: 1.1rem;
+    padding: 14px 12px;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--cor-branca);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     transition: opacity 0.15s, transform 0.15s;
+    cursor: pointer;
+    border: none;
 }
 
 .botao-registro:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 .botao-registro:active {
     opacity: 0.9;
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 .botao-entrada {
@@ -37,6 +41,137 @@
 }
 
 .icone {
-    font-size: 1.8em;
+    font-size: 1.6em;
     line-height: 1;
+}
+
+#nome-usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--cor-texto-suave);
+    background-color: var(--cor-fundo);
+    border: 1.5px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 4px;
+}
+
+#nome-usuario::before {
+    content: "👤";
+    font-size: 1rem;
+}
+
+/* ===== ÁREA DE CONFIRMAÇÃO ===== */
+
+.area-confirmacao {
+    margin-top: 16px;
+    background-color: var(--cor-fundo);
+    border: 1.5px solid var(--cor-borda);
+    border-radius: 12px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.confirmacao-titulo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-texto);
+    text-align: center;
+}
+
+.confirmacao-detalhe {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--cor-card);
+    border: 1.5px solid var(--cor-borda);
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.icone-detalhe {
+    font-size: 1.8rem;
+}
+
+.confirmacao-detalhe-texto p {
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.confirmacao-detalhe-texto strong {
+    font-size: 1rem;
+    color: var(--cor-texto);
+}
+
+.btn-confirmar {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--cor-primaria);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+.btn-confirmar:hover {
+    background-color: var(--cor-primaria-hover);
+    transform: scale(1.02);
+}
+
+.btn-cancelar {
+    width: 100%;
+    padding: 12px;
+    background-color: transparent;
+    color: var(--cor-texto-suave);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1.5px solid var(--cor-borda);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-cancelar:hover {
+    border-color: var(--cor-texto-suave);
+    color: var(--cor-texto);
+}
+
+/* ===== ÁREA DE FEEDBACK ===== */
+
+.area-feedback {
+    margin-top: 16px;
+    background-color: var(--cor-fundo);
+    border: 1.5px solid var(--cor-sucesso);
+    border-radius: 12px;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.feedback-icone {
+    font-size: 2.5rem;
+}
+
+.feedback-titulo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cor-sucesso);
+}
+
+.feedback-info {
+    font-size: 0.95rem;
+    color: var(--cor-texto-suave);
 }

@@ -1,3 +1,0 @@
-Coloque aqui o arquivo html5-qrcode-2.3.8.min.js
-Download: https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js
-(salve com o nome html5-qrcode-2.3.8.min.js e apague este LEIAME se quiser)

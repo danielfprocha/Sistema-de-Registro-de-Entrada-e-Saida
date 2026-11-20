@@ -70,13 +70,6 @@
   border-color: var(--cor-primaria);
 }
 
-.msg-erro {
-  font-size: 0.85rem;
-  color: var(--cor-erro);
-  min-height: 1.2em;
-  text-align: center;
-}
-
 #btn-entrar {
   padding: 0.85rem;
   background-color: var(--cor-primaria);

@@ -1,29 +1,35 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbx2NSi_IjNX-hKF20vYZEcwCTXsjFPr2ZRLgfArhmbTjhSx2RVSCX2wL-vfF7jAmkD5xQ/exec";
+// Única porta de comunicação com o Apps Script.
+// Tudo é POST com corpo JSON em texto, SEM cabeçalho Content-Type
+// (assim o navegador não faz preflight de CORS, que o Apps Script não responde).
+// Resposta: { ok: true, ... } ou { ok: false, codigo, mensagem }.
 
-async function fazerLogin(nome, senha) {
-  const res = await fetch(`${API_URL}?tipo=login&nome=${encodeURIComponent(nome)}&senha=${encodeURIComponent(senha)}`);
-  return res.json();
-}
+async function chamarApi(op, dados = {}) {
+  const corpo = { op, ...dados };
 
-async function salvarRegistro(dados) {
-  const res = await fetch(API_URL, {
-    method: "POST",
-    body: JSON.stringify(dados)
-  });
-  return res.json();
-}
+  if (op !== "login") {
+    const usuario = getUsuarioLogado();
+    corpo.token = usuario ? usuario.token : "";
+  }
 
-async function buscarHistorico(usuario_id) {
-  const res = await fetch(`${API_URL}?tipo=historico&usuario_id=${usuario_id}`);
-  return res.json();
-}
+  let resposta;
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify(corpo)
+    });
+    resposta = await res.json();
+  } catch (erro) {
+    return {
+      ok: false,
+      codigo: "rede",
+      mensagem: "Falha de conexão com o servidor. Verifique a internet e tente novamente."
+    };
+  }
 
-async function buscarTodos() {
-  const res = await fetch(`${API_URL}?tipo=todos`);
-  return res.json();
-}
+  if (resposta && resposta.codigo === "sessao") {
+    limparSessao();
+    window.location.href = "../html/login.html";
+  }
 
-async function buscarUltimoRegistro(usuario_id) {
-  const res = await fetch(`${API_URL}?tipo=ultimo&usuario_id=${usuario_id}`);
-  return res.json();
+  return resposta;
 }

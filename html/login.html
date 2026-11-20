@@ -16,14 +16,14 @@
     <div class="main-box">
 
       <div class="login-header">
-        <h1 class="box-titulo">Clínica Veterinária UniBH</h1>
+        <h1 class="box-titulo" data-local>Hospital Público</h1>
         <p class="box-subtitulo">Sistema de Registro de Ponto</p>
       </div>
 
       <div class="login-form">
         <div class="form-group">
-          <label for="nome">Usuário</label>
-          <input type="text" id="nome" placeholder="Digite seu usuário..." />
+          <label for="ra">RA</label>
+          <input type="text" id="ra" inputmode="numeric" autocomplete="username" placeholder="Digite seu RA..." />
         </div>
 
         <div class="form-group">
@@ -43,6 +43,7 @@
         <p>Sistema de Registro de Ponto - Clínica Veterinária UniBH</p>
   </footer>
 
+  <script src="../js/config.js"></script>
   <script src="../js/api.js"></script>
   <script src="../js/auth.js"></script>
   <script>
@@ -55,22 +56,22 @@
     });
 
     async function handleLogin() {
-      const nome = document.getElementById("nome").value.trim();
+      const ra = document.getElementById("ra").value.trim();
       const senha = document.getElementById("senha").value.trim();
       const msgErro = document.getElementById("msg-erro");
       const btn = document.getElementById("btn-entrar");
 
       msgErro.textContent = "";
 
-      if (!nome || !senha) {
-        msgErro.textContent = "Preencha o usuário e a senha.";
+      if (!ra || !senha) {
+        msgErro.textContent = "Preencha o RA e a senha.";
         return;
       }
 
       btn.disabled = true;
       btn.textContent = "Carregando...";
 
-      const resultado = await login(nome, senha);
+      const resultado = await login(ra, senha);
 
       btn.disabled = false;
       btn.textContent = "Fazer Login";

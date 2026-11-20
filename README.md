@@ -1,109 +1,56 @@
 # Sistema de Registro de Entrada e Saída
 
-Sistema web para registro de ponto de funcionários (estagiários, recepcionistas e zeladores) da clínica veterinária do Centro Universitário UniBH, desenvolvido como projeto acadêmico (A3) da própria universidade, por alunos do curso de Sistemas de Informação. Permite que funcionários registrem entrada e saída via leitura de QR Code, além de acessar o próprio histórico de registros. Esses dados ficam registrados em planilhas no Google Sheets, que podem ser acessados pelos administradores do sistema.
+Sistema web de registro de entrada e saída, desenvolvido como projeto acadêmico (A3) por alunos de Sistemas de Informação do UniBH para a Clínica Veterinária UniBH. Na etapa atual funciona como **piloto no Hospital Público** (dez/2026 e jan/2027), com alunos de projetos de extensão de medicina veterinária. Os dados ficam em planilhas do Google Sheets.
 
 ---
 
-## Funcionalidades
+## Fluxo do sistema
 
-- Login com autenticação via Google Sheets
-- Leitura de QR Code para validar presença física na clínica
-- Registro de entrada e saída com validação de sequência
-- Histórico individual de registros por funcionário
+1. **Login** com RA e senha (provisória, definida no cadastro em lote).
+2. **QR Code**: o aluno lê o QR Code do local. O texto é conferido no servidor.
+3. **Entrada ou Saída**: o aluno escolhe a ação e vê uma tela de confirmação com nome e RA.
+4. **Localização**: ao confirmar, o navegador captura o GPS e o servidor confere se o aluno está dentro do raio do local.
+5. **Registro**: o servidor valida QR, localização e sequência (entrada só depois de saída e vice-versa), grava e devolve data e hora. A tela só mostra "Confirmada" depois dessa resposta.
+6. O próximo registro exige ler o QR Code de novo.
+7. **Histórico**: os 10 registros mais recentes do aluno.
+
+Latitude, longitude e precisão **não são salvas**; servem apenas para validar o raio.
 
 ---
 
-## Tecnologias utilizadas
+## Tecnologias
 
-- HTML, CSS e JavaScript puro (sem frameworks)
-- [html5-qrcode](https://github.com/mebjas/html5-qrcode) — leitura de QR Code via câmera
-- Google Sheets — banco de dados
-- Google Apps Script — API back-end (via Web App)
+- HTML, CSS e JavaScript puro (sem framework e sem build)
+- [html5-qrcode](https://github.com/mebjas/html5-qrcode) 2.3.8 (arquivo local em `assets/vendor/`)
+- Google Apps Script (API) e Google Sheets (banco de dados)
 
 ---
 
 ## Estrutura de pastas
 
 ```
-Sistema-de-Registro-de-Entrada-e-Saida/
-│
-├── index.html               # Redireciona para a tela de login
-│
-├── html/
-│   ├── login.html           # Tela de login
-│   ├── qrcode.html          # Leitura do QR Code
-│   ├── registro.html        # Confirmação de entrada/saída
-│   ├── historico.html       # Histórico do funcionário
-│
-├── css/
-│   ├── global.css           # Variáveis, reset e estilos base
-│   ├── login.css
-│   ├── qrcode.css
-│   ├── registro.css
-│   ├── historico.css
-│
-├── js/
-│   ├── api.js               # Comunicação com o Google Apps Script
-│   ├── auth.js              # Login, sessão (localStorage) e proteção de páginas
-│   ├── qrcode.js            # Integração com html5-qrcode
-│   ├── registro.js          # Lógica de entrada/saída
-│   ├── historico.js         # Histórico do funcionário
-│
-└── assets/
-    └── qrcode-clinica.png   # QR Code da clínica para impressão
+/
+├── index.html                  # redireciona para html/login.html
+├── apps-script/Codigo.gs       # cópia versionada do back-end (colar no Apps Script)
+├── assets/
+│   └── vendor/html5-qrcode-2.3.8.min.js
+├── css/    global.css, login.css, qrcode.css, registro.css, historico.css
+├── html/   login.html, qrcode.html, registro.html, historico.html
+└── js/     config.js, api.js, auth.js, gps.js, qrcode.js, registro.js, historico.js
 ```
 
----
-
-## Como executar
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/danielfprocha/Sistema-de-Registro-de-Entrada-e-Saida.git
-   ```
-
-2. Abra a pasta no VS Code e inicie o **Live Server** clicando em **Go Live** no canto inferior direito.
-
-3. O sistema abre em `http://127.0.0.1:5500` e redireciona automaticamente para o login.
-
-> Para testar a leitura de QR Code, acesse pelo celular usando o IP da sua rede local:
-> `http://192.168.x.x:5500/html/qrcode.html`
+Ordem dos scripts nas páginas: `config.js` → `api.js` → `auth.js` → (`gps.js`) → script da página.
 
 ---
 
-## Configuração da API
+## Configuração
 
-A URL do Google Apps Script está definida no arquivo `js/api.js`:
+1. **Back-end**: cole `apps-script/Codigo.gs` no Apps Script da planilha geral, configure as Propriedades do script (`QR_TEXTO`, `LOCAL_LAT`, `LOCAL_LNG`, `RAIO_METROS`, `SAL`, `COORDENADOR_EMAIL`) e publique como Web App (executar como "Eu", acesso "Qualquer pessoa"). A cada mudança no script, publique uma **nova versão da implantação**.
+2. **Front-end**: em `js/config.js`, ajuste `API_URL` (URL do Web App) e `LOCAL_NOME`.
+3. **QR Code**: gere o QR com o texto definido em `QR_TEXTO`. **Não versione** o QR definitivo.
+4. **Hospedagem**: use HTTPS (GitHub Pages, Cloudflare Pages ou Netlify). Câmera e GPS só funcionam em HTTPS (ou em `localhost`).
 
-```javascript
-const API_URL = "https://script.google.com/macros/s/AKfycbx2NSi_IjNX-hKF20vYZEcwCTXsjFPr2ZRLgfArhmbTjhSx2RVSCX2wL-vfF7jAmkD5xQ/exec";
-```
-
-Para configurar em outro ambiente, substitua pela URL gerada ao implantar o Apps Script como Web App.
-
----
-
-## Fluxo do sistema
-
-O funcionamento do sistema ocorre da seguinte forma:
-
-1. O usuário chega à clínica e escaneia o QR Code disponível na entrada do local utilizando a câmera de seu celular.
-2. O QR Code redireciona automaticamente o usuário para o site da aplicação de registro de ponto.
-3. Ao acessar o sistema, o usuário realiza o login informando suas credenciais (nome e senha).
-4. Após o login, o sistema solicita a confirmação da leitura do QR Code para validar que o usuário está fisicamente no local.
-5. Após o registro, o sistema exibe duas opções na tela: **"Entrada"** e **"Saída"**.
-6. Depois de clicar em uma delas, o usuário recebe uma mensagem pedindo confirmação:
-   - Para **"Entrada"**: aparece um botão **"Confirmar Entrada"**
-   - Para **"Saída"**: aparece um botão **"Confirmar Saída"**
-7. Para confirmar a ação, o sistema verifica o último registro do usuário:
-   - Se a ação for **"Entrada"**, o sistema confirma apenas se o último registro for **"Saída"**
-   - Se a ação for **"Saída"**, o sistema confirma apenas se o último registro for **"Entrada"**
-   - Caso a ação seja igual ao último registro, o sistema exibe uma mensagem de erro. Nesse caso:
-     - O usuário pode ter clicado na opção errada, e basta selecionar a opção correta
-     - O usuário pode ter esquecido de registrar o ponto anterior, nesse caso, deve solicitar ao administrador que corrija manualmente no Google Sheets
-8. Somente após a confirmação, o sistema captura automaticamente a **data** e o **horário**.
-9. O sistema exibe para o usuário a confirmação com **"Entrada Confirmada"** ou **"Saída Confirmada"**, junto com a data e horário.
-10. Finalizando o processo, o usuário pode acessar seu **histórico de registros** na plataforma.
+> Testes locais: o Live Server em `http://127.0.0.1:5500` funciona no computador. No celular, o endereço `http://192.168.x.x` **não libera a câmera**; teste pela página publicada em HTTPS.
 
 ---
 

@@ -61,4 +61,3 @@ Projeto desenvolvido por alunos do curso de Sistemas de Informação — UniBH.
 - Daniel Fernandes Peres da Rocha
 - Gustavo Ferreira França de Abreu
 - Gustavo Teixeira Rocha Araújo
-- João Vitor Fonseca Matos

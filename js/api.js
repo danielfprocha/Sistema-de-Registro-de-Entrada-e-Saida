@@ -2,7 +2,6 @@
 // Tudo é POST com corpo JSON em texto, SEM cabeçalho Content-Type
 // (assim o navegador não faz preflight de CORS, que o Apps Script não responde).
 // Resposta: { ok: true, ... } ou { ok: false, codigo, mensagem }.
-const API_URL = "https://script.google.com/macros/s/AKfycbxGSX7Noj7uoziGJpyKPeEjXEsOa6DheHQRO4MoJMogZ4pHvtJUBEDxmOEmA-8_jYbYsQ/exec";
 
 async function chamarApi(op, dados = {}) {
   const corpo = { op, ...dados };

@@ -23,7 +23,7 @@ function mensagemErroCamera(erro) {
   if (nome === "NotReadableError") {
     return "A câmera está em uso por outro aplicativo. Feche-o e recarregue a página.";
   }
-  return "Não foi possível acessar a câmera. Verifique as permissões do navegador. (" + (erro && erro.message ? erro.message : erro) + ")";
+  return "Não foi possível acessar a câmera. Verifique as permissões do navegador.";
 }
 
 async function aoLerQr(textoLido) {

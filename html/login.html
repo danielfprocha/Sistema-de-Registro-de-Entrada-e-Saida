@@ -55,7 +55,7 @@
       if (e.key === "Enter") handleLogin();
     });
 
-    async function handleLogin() {
+        async function handleLogin() {
       const ra = document.getElementById("ra").value.trim();
       const senha = document.getElementById("senha").value.trim();
       const msgErro = document.getElementById("msg-erro");
@@ -71,16 +71,20 @@
       btn.disabled = true;
       btn.textContent = "Carregando...";
 
-      const resultado = await login(ra, senha);
-
-      btn.disabled = false;
-      btn.textContent = "Fazer Login";
-
-      if (resultado.sucesso) {
-        window.location.href = "qrcode.html";
-      } else {
+      try {
+        const resultado = await login(ra, senha);
+        if (resultado.sucesso) {
+          window.location.href = "qrcode.html";
+          return;
+        }
         msgErro.textContent = resultado.mensagem;
         document.getElementById("senha").value = "";
+      } catch (erro) {
+        console.error(erro);
+        msgErro.textContent = "Erro inesperado. Veja o console do navegador.";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Fazer Login";
       }
     }
   </script>

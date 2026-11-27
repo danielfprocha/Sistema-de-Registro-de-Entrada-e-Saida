@@ -4,7 +4,7 @@
 
 // URL do Web App do Apps Script (termina em /exec).
 // Atualize sempre que criar uma NOVA implantação.
-const API_URL = "https://script.google.com/macros/s/AKfycbxEbWwbuRVWWM4oN5bx1FxNwtNl87i18EHgIZqevM4pMHp2cvLxhSVESauv_F8lTQcQFw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyRi6jSOvntsZVAdJ4J4yOTTe8PO8HghxasIMQgSOoX4-HdffDHx4toP1SOAtcXM-HKSw/exec";
 
 // Nome do local exibido nas telas (elementos com o atributo data-local)
 const LOCAL_NOME = "Hospital Público";

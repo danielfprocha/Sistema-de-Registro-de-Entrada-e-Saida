@@ -11,19 +11,28 @@ async function chamarApi(op, dados = {}) {
     corpo.token = usuario ? usuario.token : "";
   }
 
+  const controle = new AbortController();
+  const timer = setTimeout(() => controle.abort(), 30000);
+
   let resposta;
   try {
     const res = await fetch(API_URL, {
       method: "POST",
-      body: JSON.stringify(corpo)
+      body: JSON.stringify(corpo),
+      signal: controle.signal
     });
     resposta = await res.json();
   } catch (erro) {
+    console.error("Erro na chamada à API:", erro);
     return {
       ok: false,
       codigo: "rede",
-      mensagem: "Falha de conexão com o servidor. Verifique a internet e tente novamente."
+      mensagem: erro.name === "AbortError"
+        ? "O servidor demorou demais para responder. Tente novamente."
+        : "Falha de conexão com o servidor. Verifique a internet e tente novamente."
     };
+  } finally {
+    clearTimeout(timer);
   }
 
   if (resposta && resposta.codigo === "sessao") {

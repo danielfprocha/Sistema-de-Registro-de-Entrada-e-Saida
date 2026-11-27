@@ -27,12 +27,10 @@ function mensagemErroCamera(erro) {
 }
 
 async function aoLerQr(textoLido) {
-  console.log("QR lido");
   if (validando) return;
   validando = true;
 
   const r = await chamarApi("validarQr", { qr: textoLido });
-  console.log("Resposta:", r);
 
   if (r && r.ok) {
     sessionStorage.setItem("qr_texto", textoLido);
